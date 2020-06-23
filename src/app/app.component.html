@@ -1,0 +1,47 @@
+<div class="selection">
+
+    <mat-form-field>
+        <mat-label>Panel</mat-label>
+        <mat-select [(ngModel)]="singleOrMulti" name="singleOrMulti">
+            <mat-option value="single">single panel</mat-option>
+            <mat-option value="multi">multi panel</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Select Mode</mat-label>
+        <mat-select [(ngModel)]="mode" name="mode">
+            <mat-option value="monthly">monthly</mat-option>
+            <mat-option value="annual">annual</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-slide-toggle [(ngModel)]="placeholder">
+        Days placeholder
+    </mat-slide-toggle>
+
+    <mat-form-field *ngIf="singleOrMulti !== 'single'">
+        <mat-label>Months before</mat-label>
+        <mat-select [(ngModel)]="monthsBefore">
+            <mat-option *ngFor="let num of monthsAfterBefore" [value]="num">{{num}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="singleOrMulti !== 'single'">
+        <mat-label>Months after</mat-label>
+        <mat-select [(ngModel)]="monthsAfter">
+            <mat-option *ngFor="let num of monthsAfterBefore" [value]="num">{{num}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+</div>
+
+<calendar-panels *ngIf="singleOrMulti == 'multi'" [mode]="mode" [placeholderDay]="placeholder" year="2020" month="5"
+    [monthsBefore]="monthsBefore" [monthsAfter]="monthsAfter" [config]="calendarConfig">
+</calendar-panels>
+
+<div class="singlePanel">
+    <calendar-panel *ngIf="singleOrMulti == 'single'" [placeholderDay]="placeholder" year="2020" month="5"
+        [config]="calendarConfig">
+    </calendar-panel>
+</div>
