@@ -37,11 +37,11 @@
 </div>
 
 <calendar-panels *ngIf="singleOrMulti == 'multi'" [mode]="mode" [placeholderDay]="placeholder" year="2020" month="5"
-    [monthsBefore]="monthsBefore" [monthsAfter]="monthsAfter" [config]="calendarConfig">
+    [monthsBefore]="monthsBefore" [monthsAfter]="monthsAfter" [config]="calendarConfig" (clickDate)="openSnackBar($event)">
 </calendar-panels>
 
 <div class="singlePanel">
     <calendar-panel *ngIf="singleOrMulti == 'single'" [placeholderDay]="placeholder" year="2020" month="5"
-        [config]="calendarConfig">
+        [config]="calendarConfig" (clickDate)="openSnackBar($event)">
     </calendar-panel>
 </div>
