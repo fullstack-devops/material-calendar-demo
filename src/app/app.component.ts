@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CalendarConfig } from 'material-calendar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,7 @@ import { CalendarConfig } from 'material-calendar';
 })
 export class AppComponent implements OnInit {
   title = 'Material Calendar Demo';
+  durationInSeconds = 5;
 
   placeholder = false // boolean
   mode = 'monthly' // 'annual' | 'monthly'
@@ -32,10 +34,24 @@ export class AppComponent implements OnInit {
     switches: true,
   }
 
+  constructor(private _snackBar: MatSnackBar) { }
+
   ngOnInit() {
   }
 
   switchMode() {
     this.mode = (this.mode === 'monthly') ? 'annual' : 'monthly'
+  }
+
+  openSnackBar(event) { // JSON.stringify(event) `kw: ${event.kw}, `
+    this._snackBar.open(`kw: ${event.kw},
+    day: ${event.day},
+    date: ${event.date},
+    isWeekendDay: ${event.isWeekendDay},
+    isHoliday: ${event.isHoliday},
+    type: ${event.type}`, '', {
+      duration: this.durationInSeconds * 1000,
+      panelClass: ['success-snackbar']
+    });
   }
 }
