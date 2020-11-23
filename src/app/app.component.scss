@@ -1,16 +1,10 @@
 .selection {
     width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
 .selection > * {
     margin: 12px;
-}
-
-.singlePanel {
-    width: 600px;
-}
-
-.success-snackbar {
-    background: #1fcd98;
-    white-space: wrap;
 }
