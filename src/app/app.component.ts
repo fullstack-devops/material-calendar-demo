@@ -16,6 +16,8 @@ export class AppComponent implements OnInit {
   monthsBefore = 0;
   monthsAfter = 0;
 
+  selectedDay = "";
+
   calendarConfig: CalendarConfig = {
     panelBgColor: '#ffffff',
     autoTextColor: true,
@@ -39,6 +41,7 @@ export class AppComponent implements OnInit {
 
   testMethod(event: any) {
     console.log(event)
+    this.selectedDay = event["date"]
   }
 
   switchMode() {
