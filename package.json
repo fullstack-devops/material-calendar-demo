@@ -20,9 +20,8 @@
     "@angular/platform-browser": "~12.0.2",
     "@angular/platform-browser-dynamic": "~12.0.2",
     "@angular/router": "~12.0.2",
-    "material-calendar": "^2.2.1",
+    "material-calendar": "^3.0.1",
     "moment": "^2.29.1",
-    "moment-business": "^3.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.1.0",
     "zone.js": "~0.11.4"

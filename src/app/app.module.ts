@@ -5,7 +5,9 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { MaterialCalendarModule } from 'material-calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './material';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -15,8 +17,10 @@ import { MaterialModule } from './material';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MaterialModule,
     FormsModule,
+    MatSlideToggleModule,
+    MatFormFieldModule,
+    MatSelectModule,
     MaterialCalendarModule
   ],
   providers: [

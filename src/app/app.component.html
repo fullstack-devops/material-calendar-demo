@@ -1,34 +1,31 @@
 <div class="selection">
-  <mat-form-field>
-      <mat-label>Select Mode</mat-label>
-      <mat-select [(ngModel)]="mode" name="mode">
-          <mat-option value="monthly">monthly</mat-option>
-          <mat-option value="annual">annual</mat-option>
-      </mat-select>
-  </mat-form-field>
+    <mat-slide-toggle [(ngModel)]="placeholder">
+        Days placeholder
+    </mat-slide-toggle>
 
-  <mat-slide-toggle [(ngModel)]="placeholder">
-      Days placeholder
-  </mat-slide-toggle>
+    <mat-form-field>
+        <mat-label>Months before</mat-label>
+        <mat-select [(ngModel)]="monthsBefore">
+            <mat-option *ngFor="let num of monthsAfterBefore" [value]="num">{{num}}</mat-option>
+        </mat-select>
+    </mat-form-field>
 
-  <mat-form-field>
-      <mat-label>Months before</mat-label>
-      <mat-select [(ngModel)]="monthsBefore">
-          <mat-option *ngFor="let num of monthsAfterBefore" [value]="num">{{num}}</mat-option>
-      </mat-select>
-  </mat-form-field>
+    <mat-form-field>
+        <mat-label>Months after</mat-label>
+        <mat-select [(ngModel)]="monthsAfter">
+            <mat-option *ngFor="let num of monthsAfterBefore" [value]="num">{{num}}</mat-option>
+        </mat-select>
+    </mat-form-field>
 
-  <mat-form-field>
-      <mat-label>Months after</mat-label>
-      <mat-select [(ngModel)]="monthsAfter">
-          <mat-option *ngFor="let num of monthsAfterBefore" [value]="num">{{num}}</mat-option>
-      </mat-select>
-  </mat-form-field>
-
-  <p>Your selected day: {{selectedDay}}</p>
+    <div>
+        Events: {{ latestEvent | json }}
+    </div>
 
 </div>
 
-<calendar-panels [mode]="mode" [placeholderDay]="placeholder" [year]="2021" [month]="5" [monthsBefore]="monthsBefore"
-  [monthsAfter]="monthsAfter" [config]="calendarConfig" (clickDate)="testMethod($event)">
-</calendar-panels>
+<div>
+    <calendar-panel [placeholderDay]="placeholder" [dataSource]="dataSource" [year]="year" [month]="month"
+        [monthsBefore]="monthsBefore" [monthsAfter]="monthsAfter" [config]="calendarConfig"
+        (clickDate)="testMethod($event)">
+    </calendar-panel>
+</div>
